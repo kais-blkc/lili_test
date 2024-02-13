@@ -16,7 +16,7 @@ const getTreeMenuItemStr = (item, classes = '') => {
 
 // Получение данных с API
 async function getFetchData() {
-  const response = await fetch('data.json');
+  const response = await fetch('/data.json');
   const data = await response.json();
   return data;
 }
@@ -41,8 +41,11 @@ function createTreeHashMap(arrData) {
 }
 
 // Добавление данных в HTML
-function appendTreeInHMTL(nodeList, nodeParent) {
-  nodeList.forEach((item) => {
+function appendTreeInHMTL(treeList, nodeParent) {
+  // treeList - Элементы дерева
+  // nodeParent - Node родительский элемент куда добавлять элементы
+
+  treeList.forEach((item) => {
     const curClasses = item.head ? 'tree-menu__subitem' : '';
 
     nodeParent.insertAdjacentHTML(
